@@ -9,7 +9,7 @@
 
 @section("content")
     <table>
-    <form action="board/add" method = "post">
+    <form action="/laravel/board/add" method = "post">
         {{csrf_field()}}
         <tr><th>person id: </th><td><input type="number" name="person_id"></td></tr>
         <tr><th>title:</th><td><input type="text" name="title"></td></tr>
