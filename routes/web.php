@@ -11,23 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get("hello","HelloController@index");
-Route::post("hello","HelloController@post");
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get("hello","HelloController@index");
+// Route::post("hello","HelloController@post");
 
-Route::get("person","PersonController@index");
-Route::get("person/find","PersonController@find");
-Route::post("person/find","PersonController@search");
-Route::get("person/add","PersonController@add");
-Route::post("person/add","PersonController@create");
+// Route::get("person","PersonController@index");
+// Route::get("person/find","PersonController@find");
+// Route::post("person/find","PersonController@search");
+// Route::get("person/add","PersonController@add");
+// Route::post("person/add","PersonController@create");
 
-Route::get("board","BoardController@index");
-Route::get("board/add","BoardController@add");
-Route::post("board/add","BoardController@create");
+// Route::get("board","BoardController@index");
+// Route::get("board/add","BoardController@add");
+// Route::post("board/add","BoardController@create");
 
-Route::resource("rest","RestappController");
-Auth::routes();
+// Route::resource("rest","RestappController");
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/{any}', function() {
+    return view('spa.layouts');
+})->where('any', '.*');
