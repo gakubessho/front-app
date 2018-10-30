@@ -54,4 +54,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Category::class);
     }
 
+    public function timeRecords()
+    {
+        return $this->hasMany(TimeRecord::class);
+    }
+
 }

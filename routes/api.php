@@ -25,6 +25,7 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::resource('categories',  'CategoryController',['except' => ['create', 'edit']]);
+        Route::resource('timerecords',  'TimeRecordController',['except' => ['create', 'edit']]);
         Route::get('me',  'AuthenticateController@getCurrentUser');
     });
 });
