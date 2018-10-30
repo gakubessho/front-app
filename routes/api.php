@@ -13,8 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::resource('topics','TopicController');
+// Route::resource('topics','TopicController');
+
+Route::group(['middleware' => 'api'], function () {
+    Route::post('authenticate',  'AuthenticateController@authenticate');
+    Route::get('logout',  'AuthenticateController@logout')->middleware('jwt.refresh');
+
+    Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::resource('categories',  'CategoryController',['except' => ['create', 'edit']]);
+        Route::get('me',  'AuthenticateController@getCurrentUser');
+    });
+});
