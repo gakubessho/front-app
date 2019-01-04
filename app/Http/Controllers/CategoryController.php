@@ -18,8 +18,8 @@ class CategoryController extends Controller
     {
         return Category::get()->keyBy('id');
 
-        $user = JWTAuth::parseToken()->authenticate();
-        return $user->categories()->get()->keyBy('id');
+        // $user = JWTAuth::parseToken()->authenticate();
+        // return $user->categories()->get()->keyBy('id');
     }
 
 
@@ -62,6 +62,11 @@ class CategoryController extends Controller
         $user = JWTAuth::parseToken()->authenticate();
         $user->categories()->find($id)->fill($request->only('name'))->save();
         return "success!!";
+    }
+
+    public function destroy($id)
+    {
+        return Category::destroy($id);
     }
 
 }
